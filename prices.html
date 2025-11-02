@@ -26,25 +26,9 @@
     <div class="nav-right">
       <a href="contact.html">Boka introduktion</a>
     </div>
-
-    <!-- HAMBURGER -->
-    <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <!-- MOBILMENY -->
-    <div class="mobile-menu">
-      <button class="close-btn">✕</button>
-      <a href="index.html">Start</a>
-      <a href="about.html">Om oss</a>
-      <a href="prices.html">Priser</a>
-      <a href="contact.html">Kontakt</a>
-      <a href="contact.html" class="btn-mobile">Boka introduktion</a>
-    </div>
   </nav>
 
+  <!-- === INNEHÅLL === -->
   <main class="container">
 
     <section class="page-title">
@@ -169,7 +153,53 @@
       </div>
     </section>
 
-    <!-- (Dina tillägg och jämförelseblock oförändrade) -->
+    <!-- === TILLÄGG === -->
+    <section class="section">
+      <h2>Tillägg</h2>
+      <div class="grid-3 addons-grid">
+        <div class="card addon">
+          <h3>FAQ & Makron</h3>
+          <p class="lead">Bygg och uppdatera FAQ + 10–20 makron.</p>
+          <p class="small">490 kr/mån</p>
+          <div class="addon-toggle"><span class="chev">▾</span><span>Läs mer</span></div>
+          <div class="addon-details">
+            <ul>
+              <li>Byggnation av FAQ-sektioner i Re:amaze eller Shopify.</li>
+              <li>Optimering av standardsvar och mallar för snabbare hantering.</li>
+              <li>Löpande uppdatering av innehåll baserat på vanliga frågor.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card addon">
+          <h3>Veckorapporter</h3>
+          <p class="lead">Export från Re:amaze till Google Sheets.</p>
+          <p class="small">590 kr/mån</p>
+          <div class="addon-toggle"><span class="chev">▾</span><span>Läs mer</span></div>
+          <div class="addon-details">
+            <ul>
+              <li>Automatisk export av data till Google Sheets.</li>
+              <li>Visualisering av nyckeltal och ärendeutveckling.</li>
+              <li>Sammanfattning med trender och förbättringsförslag varje vecka.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card addon">
+          <h3>Returpolicy & automationsstöd</h3>
+          <p class="lead">Mall + implementation i kundflöden.</p>
+          <p class="small">290 kr/mån</p>
+          <div class="addon-toggle"><span class="chev">▾</span><span>Läs mer</span></div>
+          <div class="addon-details">
+            <ul>
+              <li>Utformning av returpolicy anpassad för din butik.</li>
+              <li>Integration av automatiserade returflöden i Re:amaze.</li>
+              <li>Implementering i FAQ, e-postmallar och spårningssida.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
   </main>
 
@@ -180,23 +210,48 @@
     </div>
   </footer>
 
-  <!-- === SCRIPTS === -->
+  <!-- === SCRIPT === -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Uppdatera år
+      // År i footern
       document.querySelector("[data-year]").textContent = new Date().getFullYear();
 
-      // Hamburgermeny
-      const hamburger = document.querySelector('.hamburger');
-      const mobileMenu = document.querySelector('.mobile-menu');
-      const closeBtn = document.querySelector('.close-btn');
-      if (hamburger && mobileMenu && closeBtn) {
-        hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
-        closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
-        mobileMenu.querySelectorAll('a').forEach(link =>
-          link.addEventListener('click', () => mobileMenu.classList.remove('open'))
-        );
-      }
+      // PLANER
+      const planCards = document.querySelectorAll(".plan-card");
+      planCards.forEach(card => {
+        const toggle = card.querySelector(".plan-toggle");
+        const details = card.querySelector(".plan-details");
+        toggle.addEventListener("click", () => {
+          const isActive = card.classList.contains("active");
+          planCards.forEach(c => {
+            c.classList.remove("active");
+            c.querySelector(".plan-details").style.maxHeight = null;
+          });
+          if (!isActive) {
+            card.classList.add("active");
+            details.style.maxHeight = details.scrollHeight + "px";
+          }
+        });
+      });
+
+      // TILLÄGG
+      const addonCards = document.querySelectorAll(".addon");
+      addonCards.forEach(card => {
+        const toggle = card.querySelector(".addon-toggle");
+        const details = card.querySelector(".addon-details");
+        toggle.addEventListener("click", e => {
+          e.stopPropagation();
+          const isActive = card.classList.contains("active");
+          addonCards.forEach(c => {
+            c.classList.remove("active");
+            c.querySelector(".addon-details").style.maxHeight = null;
+          });
+          if (!isActive) {
+            card.classList.add("active");
+            details.style.maxHeight = details.scrollHeight + "px";
+          }
+        });
+      });
     });
   </script>
 </body>
