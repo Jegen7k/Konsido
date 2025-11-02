@@ -1,4 +1,3 @@
-/* === FÄRGER & VARIABLER === */
 :root {
   --bg: #171c21;
   --panel: #1e242b;
@@ -22,81 +21,21 @@ body {
   color: var(--ink);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
     'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
-  scroll-behavior: smooth;
 }
 a {
   color: var(--ink);
   text-decoration: none;
-  transition: 0.2s ease;
-}
-a:hover {
-  color: var(--accent);
+  transition: color 0.2s ease;
 }
 .container {
   max-width: 1140px;
   margin: 0 auto;
   padding: 0 20px;
 }
-
-/* === HERO-SEKTION === */
 .hero .grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 28px;
-  align-items: start;
-}
-@media (max-width: 960px) {
-  .hero .grid {
-    grid-template-columns: 1fr;
-  }
-}
-.hero-text {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.hero-text h1 {
-  font-size: 2.75rem;
-  line-height: 1.1;
-  margin: 0;
-}
-.hero-text p {
-  color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.5;
-}
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-  flex-wrap: wrap;
-}
-.hero-buttons a {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--accent-ink);
-  padding: 12px 22px;
-  border-radius: 9999px;
-  font-weight: 700;
-  transition: 0.25s ease;
-}
-.hero-buttons a:hover {
-  filter: brightness(1.1);
-  transform: translateY(-1px);
-}
-.hero-buttons a.btn-outline {
-  background: transparent;
-  color: var(--accent);
-  border: 2px solid var(--accent);
-}
-.hero-buttons a.btn-outline:hover {
-  background: var(--accent);
-  color: var(--accent-ink);
-}
-.hero img {
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
 }
 
 /* === NAVIGATION === */
@@ -111,9 +50,11 @@ nav {
   border-bottom: 1px solid var(--ring);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* centrera menyn i mitten */
   z-index: 1000;
 }
+
+/* Logga (vänster) */
 .nav-left {
   position: absolute;
   left: 40px;
@@ -124,6 +65,8 @@ nav {
   height: 28px;
   width: auto;
 }
+
+/* Meny (mitten) */
 .nav-center {
   display: flex;
   gap: 28px;
@@ -138,6 +81,8 @@ nav {
 .nav-center a.active {
   color: var(--accent);
 }
+
+/* Knapp (höger) */
 .nav-right {
   position: absolute;
   right: 40px;
@@ -158,7 +103,12 @@ nav {
   transform: translateY(-1px);
 }
 
-/* === RESPONSIV NAVIGATION === */
+/* Luft under menyn */
+main {
+  padding-top: 120px; /* ändra till 120px eller 130px om text ligger för högt */
+}
+
+/* === RESPONSIVE === */
 @media (max-width: 960px) {
   nav {
     height: 60px;
@@ -174,13 +124,6 @@ nav {
   .nav-right {
     right: 20px;
   }
-}
-
-/* === LUFT UNDER MENYN === */
-main {
-  padding-top: 120px;
-}
-@media (max-width: 960px) {
   main {
     padding-top: 80px;
   }
@@ -194,9 +137,6 @@ main {
   padding: 26px;
   box-shadow: var(--shadow);
 }
-.section {
-  padding: 48px 0;
-}
 
 /* === TEXT === */
 h1 {
@@ -206,7 +146,6 @@ h1 {
 }
 h2 {
   margin: 0 0 10px;
-  font-size: 28px;
 }
 .lead {
   color: var(--muted);
@@ -245,12 +184,77 @@ h2 {
   color: var(--muted);
   font-size: 15px;
 }
-@media (max-width: 700px) {
-  .points {
+
+/* === SEKTIONER & GRID === */
+.section {
+  padding: 36px 0;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 18px;
+}
+@media (max-width: 960px) {
+  .grid-3 {
     grid-template-columns: 1fr;
   }
 }
+/* === FIX: Se till att inget innehåll hamnar under menyn === */
+body {
+  padding-top: 100px !important;
+}
+@media (max-width: 960px) {
+  body {
+    padding-top: 80px !important;
+  }
+}
 
+/* === KPI === */
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #0c1015;
+  border: 1px solid var(--ring);
+  border-radius: 12px;
+  padding: 18px;
+}
+.kpi strong {
+  font-size: 28px;
+}
+
+/* === FOOTER === */
+.footer {
+  padding: 28px 0;
+  color: var(--muted);
+  border-top: 1px solid var(--ring);
+  margin-top: 36px;
+}
+
+/* === RESPONSIVE NAV === */
+@media (max-width: 960px) {
+  nav {
+    padding: 0 20px;
+    height: 60px;
+  }
+
+  nav .nav-center {
+    display: none; /* göms tills hamburgermeny finns */
+  }
+
+  nav .nav-left img {
+    height: 26px;
+  }
+
+  nav .nav-right a {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  main {
+    padding-top: 80px;
+  }
+}
 /* === FORMULÄR === */
 form {
   display: grid;
@@ -304,31 +308,144 @@ textarea {
   background: rgba(255, 107, 107, 0.1);
   border-color: rgba(255, 107, 107, 0.35);
 }
-
-/* === GRID === */
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+/* === PRICES-SIDA === */
+.page-prices .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
 }
-@media (max-width: 960px) {
-  .grid-3 {
+
+.page-prices .page-title {
+  margin: 24px 0;
+}
+
+.page-prices .lead {
+  color: var(--muted);
+}
+
+/* Grid för planerna */
+.page-prices .plans-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .page-prices .plans-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* === FOOTER === */
-.footer {
-  padding: 28px 0;
-  color: var(--muted);
-  border-top: 1px solid var(--ring);
-  margin-top: 36px;
-  text-align: center;
+/* Kort */
+.page-prices .plan-card {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--ring);
+  border-radius: 18px;
+  padding: 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.page-prices .plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+  border-color: var(--accent);
 }
 
-/* === CTA BLOCK === */
-.page-prices .cta,
-.section .cta {
+/* Rekommenderad plan */
+.page-prices .plan-card.reco {
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 20px rgba(78, 230, 195, 0.15);
+}
+
+/* Badges */
+.page-prices .badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* Pris-tabeller */
+.page-prices .pricing {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+.page-prices .pricing td {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: top;
+}
+.page-prices .price {
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 10px;
+}
+.page-prices .small {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Toggle-knapp och detaljer */
+.page-prices .plan-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 600;
+  user-select: none;
+}
+.page-prices .plan-toggle .chev {
+  transition: transform 0.25s ease;
+}
+.page-prices .plan-card.active .plan-toggle .chev {
+  transform: rotate(180deg);
+}
+
+/* Dolda detaljer */
+.page-prices .plan-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+  opacity: 0;
+  margin-top: 0;
+}
+.page-prices .plan-card.active .plan-details {
+  max-height: 600px;
+  opacity: 1;
+  margin-top: 10px;
+}
+.page-prices .plan-details ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* Volympriser och tillägg */
+.page-prices .vtable {
+  width: 100%;
+  border-collapse: collapse;
+}
+.page-prices .vtable th,
+.page-prices .vtable td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--ring);
+}
+.page-prices .vtable th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* CTA på slutet */
+.page-prices .cta {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -342,154 +459,69 @@ textarea {
   border-radius: 14px;
   margin-top: 24px;
 }
-.page-prices .cta .btn,
-.section .cta .btn {
+.page-prices .cta .btn {
   background: var(--accent);
   color: var(--accent-ink);
 }
 @media (max-width: 700px) {
-  .page-prices .cta,
-  .section .cta {
+  .page-prices .cta {
     flex-direction: column;
     gap: 12px;
     text-align: center;
   }
 }
+/* === TILLÄGG (ADDONS) === */
+.addons-grid {
+  display: grid;
+  gap: 1.5rem;
+}
 
-/* === HAMBURGER MENU === */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 26px;
-  height: 22px;
+.addon {
+  position: relative;
+  transition: all 0.3s ease;
   cursor: pointer;
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1100;
-}
-.hamburger span {
-  display: block;
-  height: 3px;
-  background: var(--ink);
-  border-radius: 2px;
-  transition: 0.25s ease;
 }
 
-/* Mobile menu overlay */
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 100%;
-  height: 100vh;
-  background: rgba(23, 28, 33, 0.97);
-  backdrop-filter: blur(8px);
-  display: flex;
-  flex-direction: column;
+.addon.active {
+  background: linear-gradient(145deg, var(--card, #171c21), #1d242d);
+  box-shadow: 0 0 12px rgba(78, 230, 195, 0.3);
+  border: 1px solid var(--accent);
+}
+
+/* Toggle-knapp */
+.addon-toggle {
+  cursor: pointer;
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-top: 0.6rem;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 24px;
-  transition: right 0.35s ease;
-  z-index: 1000;
-}
-.mobile-menu.open {
-  right: 0;
-}
-.mobile-menu a {
-  color: var(--ink);
-  font-size: 1.4rem;
-  font-weight: 600;
-  text-decoration: none;
+  gap: 5px;
   transition: color 0.2s ease;
 }
-.mobile-menu a:hover {
-  color: var(--accent);
+.addon-toggle:hover {
+  color: #5fffd6;
 }
-.mobile-menu .btn-mobile {
-  background: var(--accent);
-  color: var(--accent-ink);
-  padding: 12px 24px;
-  border-radius: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
+
+/* Pilrotation vid öppning */
+.addon.active .chev {
+  transform: rotate(180deg);
 }
-.mobile-menu .close-btn {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  background: none;
-  border: none;
+.chev {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* Detaljsektionen */
+.addon-details {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+  margin-top: 0.6rem;
+}
+.addon-details ul {
+  padding-left: 1.3rem;
+  font-size: 0.9rem;
   color: var(--muted);
-  font-size: 2rem;
-  cursor: pointer;
-  transition: color 0.25s ease;
+  line-height: 1.5;
 }
-.mobile-menu .close-btn:hover {
-  color: var(--accent);
-}
-
-/* === Aktivera hamburgaren på mobil === */
-@media (max-width: 960px) {
-  .hamburger {
-    display: flex;
-  }
-  .nav-center {
-    display: none !important;
-  }
-  .nav-right {
-    display: none !important;
-  }
-}
-
-/* === FIX HERO GRID MOBIL === */
-@media (max-width: 960px) {
-  section.hero > .grid {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    grid-template-rows: auto auto !important;
-    gap: 32px !important;
-  }
-
-  section.hero > .grid > .card {
-    width: 100% !important;
-  }
-}
-
-/* === HERO LAYOUT FIX === */
-.hero .grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 28px;
-}
-
-@media (max-width: 960px) {
-  .hero .grid {
-    grid-template-columns: 1fr !important;
-    grid-template-rows: auto auto !important;
-    gap: 28px !important;
-  }
-  .hero .grid > .card {
-    width: 100%;
-  }
-}
-
-/* === PRICES GRID FIX === */
-.page-prices .plans-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-@media (max-width: 960px) {
-  .page-prices .plans-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-
-
