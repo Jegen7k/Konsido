@@ -14,62 +14,22 @@
     <link rel="icon" href="assets/logo.svg" />
     <link rel="stylesheet" href="assets/style.css" />
   </head>
-  
-<script>
-  const hamburger = document.querySelector('.hamburger');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  const closeBtn = document.querySelector('.close-btn');
-
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.add('open');
-  });
-  closeBtn.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-  });
-  // Stäng menyn när man klickar på en länk
-  mobileMenu.querySelectorAll('a').forEach(link =>
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-    })
-  );
-</script>
-
-  
   <body>
-<nav>
-  <div class="nav-left">
-    <a href="index.html"><img src="assets/logo.svg" alt="Konsido logotyp"></a>
-  </div>
-
-  <div class="nav-center">
-    <a href="index.html">Start</a>
-    <a href="about.html">Om oss</a>
-    <a href="prices.html">Priser</a>
-    <a href="contact.html">Kontakt</a>
-  </div>
-
-  <div class="nav-right">
-    <a href="contact.html">Boka introduktion</a>
-  </div>
-
-  <!-- HAMBURGER -->
-  <div class="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-  <!-- MOBILMENY -->
-  <div class="mobile-menu">
-    <button class="close-btn">✕</button>
-    <a href="index.html">Start</a>
-    <a href="about.html">Om oss</a>
-    <a href="prices.html">Priser</a>
-    <a href="contact.html">Kontakt</a>
-    <a href="contact.html" class="btn-mobile">Boka introduktion</a>
-  </div>
-</nav>
-
+    <nav class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html"
+          ><img src="assets/logo.svg" alt="Konsido AB logotyp" />Konsido</a
+        >
+        <div class="menu">
+          <a href="index.html">Start</a>
+          <a href="testimonials.html">Kundberättelser</a>
+          <a href="about.html">Om oss</a>
+          <a href="prices.html">Priser</a>
+          <a href="contact.html">Kontakt</a>
+        </div>
+        <a class="btn" href="contact.html">Boka introduktion</a>
+      </div>
+    </nav>
 
     <main class="container">
       <section class="page-title">
