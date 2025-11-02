@@ -199,6 +199,59 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+/* === PRISPLANER GRID === */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.plan-card {
+  background: linear-gradient(180deg, var(--panel), #11151c);
+  border: 1px solid var(--ring);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, border-color 0.3s ease;
+}
+.plan-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+.plan-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  margin-top: 10px;
+}
+.plan-card.active .plan-details {
+  max-height: 400px; /* tillräckligt stort för hela texten */
+}
+
+.plan-toggle {
+  color: var(--accent);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.plan-toggle:hover {
+  text-decoration: underline;
+}
+
+/* === MOBILANPASSNING === */
+@media (max-width: 960px) {
+  .plans-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+
 /* === FIX: Se till att inget innehåll hamnar under menyn === */
 body {
   padding-top: 100px !important;
