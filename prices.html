@@ -286,3 +286,119 @@
     });
   });
 </script>
+
+    <!-- Jämförelse -->
+<section class="section" id="value-slide">
+  <h2>Varför inte välja ”billig support utomlands”?</h2>
+  <div class="card value-card">
+    <table class="vtable value-table">
+      <tr class="expandable">
+        <th>Aspekt</th>
+        <th>Konsido (Skandinavisk kundservice)</th>
+        <th>Billig outsourcing</th>
+      </tr>
+
+      <tr class="expandable" data-info="Vi arbetar dagligen i Shopify, Klarna och Re:amaze – inte bara via dokumentation. Våra rutiner bygger på verklig e-handelserfarenhet.">
+        <td>Kompetens inom e-handel</td>
+        <td>Vi förstår Shopify, Klarna, frakt och nordiska rutiner.</td>
+        <td>Begränsad lokal kunskap och kontext.</td>
+      </tr>
+
+      <tr class="expandable" data-info="Vi skriver som riktiga människor – inga översättnings-AI eller mallar. Tonalitet anpassad efter varumärket.">
+        <td>Språk & ton</td>
+        <td>Naturlig svenska, norska och danska – rätt tonalitet.</td>
+        <td>Översatt svenska/engelska – ofta stelt och opersonligt.</td>
+      </tr>
+
+      <tr class="expandable" data-info="All kunddata stannar inom EU-servrar med GDPR-rutiner och sekretessavtal. Vi hanterar inga kunduppgifter utanför unionen.">
+        <td>Trygghet & sekretess</td>
+        <td>EU-baserad hantering med GDPR-rutiner.</td>
+        <td>Otydliga rutiner, varierande dataskydd.</td>
+      </tr>
+
+      <tr class="expandable" data-info="Varje ärende följs upp – fokus på att lösa i första svaret. Vi mäter CSAT, FRT och andel återkommande frågor.">
+        <td>Kvalitet per ärende</td>
+        <td>Hög träffsäkerhet i första svaret – färre följdfrågor.</td>
+        <td>Billigt per timme men fler missförstånd.</td>
+      </tr>
+
+      <tr class="expandable" data-info="Vi förstår hur nordiska kunder tänker kring leveranstider, returer och kommunikation. Tonen matchar marknaden.">
+        <td>Förståelse för kundresan</td>
+        <td>Erfarenhet av nordiska leveranser, returer & betalningar.</td>
+        <td>“One size fits all” – saknar kulturell förståelse.</td>
+      </tr>
+
+      <tr class="expandable" data-info="Vi bygger dashboards i Google Sheets och Looker Studio – insikter, inte bara siffror. Fokus på förbättring.">
+        <td>Rapportering & insikter</td>
+        <td>Veckorapporter, KPI:er & förbättringsförslag.</td>
+        <td>Grundläggande hantering, få förbättringsinsikter.</td>
+      </tr>
+    </table>
+
+    <!-- Plats där extra rader renderas -->
+    <div class="expansion-container"></div>
+  </div>
+  <p class="small value-note">
+    Billig support kostar mindre per timme – men mer per kund. Konsido står för trygg, effektiv och skalbar kundservice.
+  </p>
+</section>
+
+<style>
+  .value-card {
+    overflow: hidden;
+  }
+  .expandable {
+    cursor: pointer;
+    transition: background 0.25s ease;
+  }
+  .expandable:hover {
+    background: rgba(78, 230, 195, 0.05);
+  }
+  .expanded-row {
+    background: linear-gradient(145deg, var(--card), #1d242d);
+    box-shadow: inset 0 0 10px rgba(78, 230, 195, 0.2);
+    border-left: 2px solid var(--accent);
+  }
+  .expansion-text {
+    padding: 1rem 1.5rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--ring);
+    animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-4px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+</style>
+
+<script>
+  const tableRows = document.querySelectorAll(".value-table .expandable");
+  const expansionContainer = document.querySelector(".expansion-container");
+  let activeRow = null;
+
+  tableRows.forEach(row => {
+    row.addEventListener("click", () => {
+      const info = row.dataset.info;
+      // Ta bort tidigare expansion
+      document.querySelectorAll(".expanded-row").forEach(r => r.classList.remove("expanded-row"));
+      expansionContainer.innerHTML = "";
+
+      if (activeRow === row) {
+        activeRow = null;
+        return;
+      }
+
+      // Markera rad
+      row.classList.add("expanded-row");
+      activeRow = row;
+
+      // Skapa beskrivning
+      const textDiv = document.createElement("div");
+      textDiv.classList.add("expansion-text");
+      textDiv.textContent = info;
+      expansionContainer.appendChild(textDiv);
+      textDiv.scrollIntoView({behavior: "smooth", block: "center"});
+    });
+  });
+</script>
