@@ -525,3 +525,46 @@ textarea {
   color: var(--muted);
   line-height: 1.5;
 }
+
+/* === MOBILANPASSNING – ENKEL LÖSNING FÖR PRISER === */
+@media (max-width: 960px) {
+  /* Gör att planerna staplas på mobil */
+  .plans-grid {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+  }
+
+  /* Gör att tilläggen staplas på mobil */
+  .addons-grid {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+  }
+
+  /* Låt varje kort ta full bredd */
+  .plan-card,
+  .addon {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Gör text lite mindre */
+  .plan-card h3,
+  .addon h3 {
+    font-size: 1.2rem;
+  }
+
+  /* Justera container-padding */
+  .container {
+    padding: 0 16px;
+  }
+
+  /* Gör att plan-detaljer expanderar snyggt på mobil */
+  .plan-details,
+  .addon-details {
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+  }
+}
+
