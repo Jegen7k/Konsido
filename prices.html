@@ -263,30 +263,6 @@
   }
 </style>
 
-<script>
-  // Klick-funktion för tilläggskorten
-  const addonCards = document.querySelectorAll('.addon');
-  addonCards.forEach(card => {
-    const toggle = card.querySelector('.addon-toggle');
-    const details = card.querySelector('.addon-details');
-
-    card.addEventListener('click', (e) => {
-      // Tillåt klick på hela kortet men undvik klick på länk
-      if (!e.target.closest('.addon-toggle') && e.target.tagName === 'A') return;
-
-      const isActive = card.classList.contains('active');
-      addonCards.forEach(c => {
-        c.classList.remove('active');
-        c.querySelector('.addon-details').style.maxHeight = null;
-      });
-      if (!isActive) {
-        card.classList.add('active');
-        details.style.maxHeight = details.scrollHeight + "px";
-      }
-    });
-  });
-</script>
-
     <!-- Jämförelse -->
 <section class="section" id="value-slide">
   <h2>Varför inte välja ”billig support utomlands”?</h2>
@@ -373,6 +349,53 @@
 </style>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ====== PLANER (dropdown) ====== */
+  const grid = document.getElementById('plans');
+  const cards = grid.querySelectorAll('.plan-card');
+  function resetFocus(){
+    grid.classList.remove('focus-mode');
+    cards.forEach(c=>c.classList.remove('active'));
+  }
+  cards.forEach(card=>{
+    card.addEventListener('click', ()=>{
+      const isActive = card.classList.contains('active');
+      if(isActive){resetFocus();return;}
+      grid.classList.add('focus-mode');
+      cards.forEach(c=>c.classList.remove('active'));
+      card.classList.add('active');
+      setTimeout(()=>card.scrollIntoView({behavior:'smooth', block:'center'}), 60);
+    });
+  });
+  document.addEventListener('click',(e)=>{
+    if(!e.target.closest('.plan-card') && grid.classList.contains('focus-mode')){
+      resetFocus();
+    }
+  });
+
+  /* ====== TILLÄGG (dropdown) ====== */
+  const addonCards = document.querySelectorAll('.addon');
+  addonCards.forEach(card => {
+    const toggle = card.querySelector('.addon-toggle');
+    const details = card.querySelector('.addon-details');
+
+    card.addEventListener('click', (e) => {
+      if (!e.target.closest('.addon-toggle') && e.target.tagName === 'A') return;
+
+      const isActive = card.classList.contains('active');
+      addonCards.forEach(c => {
+        c.classList.remove('active');
+        c.querySelector('.addon-details').style.maxHeight = null;
+      });
+      if (!isActive) {
+        card.classList.add('active');
+        details.style.maxHeight = details.scrollHeight + "px";
+      }
+    });
+  });
+
+  /* ====== JÄMFÖRELSETABELL ====== */
   const tableRows = document.querySelectorAll(".value-table .expandable");
   const expansionContainer = document.querySelector(".expansion-container");
   let activeRow = null;
@@ -380,7 +403,6 @@
   tableRows.forEach(row => {
     row.addEventListener("click", () => {
       const info = row.dataset.info;
-      // Ta bort tidigare expansion
       document.querySelectorAll(".expanded-row").forEach(r => r.classList.remove("expanded-row"));
       expansionContainer.innerHTML = "";
 
@@ -389,11 +411,9 @@
         return;
       }
 
-      // Markera rad
       row.classList.add("expanded-row");
       activeRow = row;
 
-      // Skapa beskrivning
       const textDiv = document.createElement("div");
       textDiv.classList.add("expansion-text");
       textDiv.textContent = info;
@@ -401,4 +421,10 @@
       textDiv.scrollIntoView({behavior: "smooth", block: "center"});
     });
   });
+
+  /* ====== FOOTER YEAR ====== */
+  document.querySelectorAll('[data-year]').forEach(n=>n.textContent=new Date().getFullYear());
+
+});
 </script>
+
