@@ -1,3 +1,4 @@
+/* === FÄRGER & VARIABLER === */
 :root {
   --bg: #171c21;
   --panel: #1e242b;
@@ -21,21 +22,95 @@ body {
   color: var(--ink);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
     'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  scroll-behavior: smooth;
 }
 a {
   color: var(--ink);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: 0.2s ease;
+}
+a:hover {
+  color: var(--accent);
 }
 .container {
   max-width: 1140px;
   margin: 0 auto;
   padding: 0 20px;
 }
-.hero .grid {
+
+/* === HERO-SEKTION (Responsiv layout) === */
+.hero {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 28px;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 60px;
+}
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.hero-text h1 {
+  font-size: 2.75rem;
+  line-height: 1.1;
+  margin: 0;
+}
+.hero-text p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+.hero-buttons a {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 12px 22px;
+  border-radius: 9999px;
+  font-weight: 700;
+  transition: 0.25s ease;
+}
+.hero-buttons a:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+.hero-buttons a.btn-outline {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+.hero-buttons a.btn-outline:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.hero img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+/* === RESPONSIVE HERO === */
+@media (max-width: 960px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-text {
+    align-items: center;
+  }
+  .hero img {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .hero-text h1 {
+    font-size: 2rem;
+  }
 }
 
 /* === NAVIGATION === */
@@ -50,11 +125,9 @@ nav {
   border-bottom: 1px solid var(--ring);
   display: flex;
   align-items: center;
-  justify-content: center; /* centrera menyn i mitten */
+  justify-content: center;
   z-index: 1000;
 }
-
-/* Logga (vänster) */
 .nav-left {
   position: absolute;
   left: 40px;
@@ -65,8 +138,6 @@ nav {
   height: 28px;
   width: auto;
 }
-
-/* Meny (mitten) */
 .nav-center {
   display: flex;
   gap: 28px;
@@ -81,8 +152,6 @@ nav {
 .nav-center a.active {
   color: var(--accent);
 }
-
-/* Knapp (höger) */
 .nav-right {
   position: absolute;
   right: 40px;
@@ -103,12 +172,7 @@ nav {
   transform: translateY(-1px);
 }
 
-/* Luft under menyn */
-main {
-  padding-top: 120px; /* ändra till 120px eller 130px om text ligger för högt */
-}
-
-/* === RESPONSIVE === */
+/* === RESPONSIV NAVIGATION === */
 @media (max-width: 960px) {
   nav {
     height: 60px;
@@ -124,6 +188,13 @@ main {
   .nav-right {
     right: 20px;
   }
+}
+
+/* === LUFT UNDER MENYN === */
+main {
+  padding-top: 120px;
+}
+@media (max-width: 960px) {
   main {
     padding-top: 80px;
   }
@@ -137,6 +208,9 @@ main {
   padding: 26px;
   box-shadow: var(--shadow);
 }
+.section {
+  padding: 48px 0;
+}
 
 /* === TEXT === */
 h1 {
@@ -146,6 +220,7 @@ h1 {
 }
 h2 {
   margin: 0 0 10px;
+  font-size: 28px;
 }
 .lead {
   color: var(--muted);
@@ -184,77 +259,12 @@ h2 {
   color: var(--muted);
   font-size: 15px;
 }
-
-/* === SEKTIONER & GRID === */
-.section {
-  padding: 36px 0;
-}
-.grid-3 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 18px;
-}
-@media (max-width: 960px) {
-  .grid-3 {
+@media (max-width: 700px) {
+  .points {
     grid-template-columns: 1fr;
   }
 }
-/* === FIX: Se till att inget innehåll hamnar under menyn === */
-body {
-  padding-top: 100px !important;
-}
-@media (max-width: 960px) {
-  body {
-    padding-top: 80px !important;
-  }
-}
 
-/* === KPI === */
-.kpi {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  background: #0c1015;
-  border: 1px solid var(--ring);
-  border-radius: 12px;
-  padding: 18px;
-}
-.kpi strong {
-  font-size: 28px;
-}
-
-/* === FOOTER === */
-.footer {
-  padding: 28px 0;
-  color: var(--muted);
-  border-top: 1px solid var(--ring);
-  margin-top: 36px;
-}
-
-/* === RESPONSIVE NAV === */
-@media (max-width: 960px) {
-  nav {
-    padding: 0 20px;
-    height: 60px;
-  }
-
-  nav .nav-center {
-    display: none; /* göms tills hamburgermeny finns */
-  }
-
-  nav .nav-left img {
-    height: 26px;
-  }
-
-  nav .nav-right a {
-    padding: 8px 14px;
-    font-size: 14px;
-  }
-
-  main {
-    padding-top: 80px;
-  }
-}
 /* === FORMULÄR === */
 form {
   display: grid;
@@ -308,143 +318,43 @@ textarea {
   background: rgba(255, 107, 107, 0.1);
   border-color: rgba(255, 107, 107, 0.35);
 }
-/* === PRICES-SIDA === */
-.page-prices .container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 24px;
-}
 
-.page-prices .page-title {
-  margin: 24px 0;
-}
-
-.page-prices .lead {
-  color: var(--muted);
-}
-
-/* Grid för planerna */
-.page-prices .plans-grid {
+/* === GRID === */
+.grid-3 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
-@media (max-width: 900px) {
-  .page-prices .plans-grid {
+@media (max-width: 960px) {
+  .grid-3 {
     grid-template-columns: 1fr;
   }
 }
 
-/* Kort */
-.page-prices .plan-card {
-  position: relative;
-  background: var(--panel);
-  border: 1px solid var(--ring);
-  border-radius: 18px;
-  padding: 24px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease,
-    border-color 0.25s ease;
-}
-.page-prices .plan-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
-  border-color: var(--accent);
-}
-
-/* Rekommenderad plan */
-.page-prices .plan-card.reco {
-  border: 1px solid var(--accent);
-  box-shadow: 0 0 20px rgba(78, 230, 195, 0.15);
-}
-
-/* Badges */
-.page-prices .badge {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  background: var(--accent);
-  color: var(--accent-ink);
-  font-size: 12px;
-  padding: 4px 10px;
-  border-radius: 999px;
-}
-
-/* Pris-tabeller */
-.page-prices .pricing {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 12px;
-}
-.page-prices .pricing td {
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  vertical-align: top;
-}
-.page-prices .price {
-  font-weight: 700;
-  font-size: 18px;
-  margin-top: 10px;
-}
-.page-prices .small {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* Toggle-knapp och detaljer */
-.page-prices .plan-toggle {
+/* === KPI === */
+.kpi {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 6px;
-  margin-top: 10px;
-  color: var(--accent);
-  cursor: pointer;
-  font-weight: 600;
-  user-select: none;
+  background: #0c1015;
+  border: 1px solid var(--ring);
+  border-radius: 12px;
+  padding: 18px;
 }
-.page-prices .plan-toggle .chev {
-  transition: transform 0.25s ease;
-}
-.page-prices .plan-card.active .plan-toggle .chev {
-  transform: rotate(180deg);
+.kpi strong {
+  font-size: 28px;
 }
 
-/* Dolda detaljer */
-.page-prices .plan-details {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s ease, opacity 0.25s ease;
-  opacity: 0;
-  margin-top: 0;
-}
-.page-prices .plan-card.active .plan-details {
-  max-height: 600px;
-  opacity: 1;
-  margin-top: 10px;
-}
-.page-prices .plan-details ul {
-  margin: 0;
-  padding-left: 20px;
+/* === FOOTER === */
+.footer {
+  padding: 28px 0;
   color: var(--muted);
-  font-size: 15px;
+  border-top: 1px solid var(--ring);
+  margin-top: 36px;
+  text-align: center;
 }
 
-/* Volympriser och tillägg */
-.page-prices .vtable {
-  width: 100%;
-  border-collapse: collapse;
-}
-.page-prices .vtable th,
-.page-prices .vtable td {
-  padding: 10px 12px;
-  text-align: left;
-  border-bottom: 1px solid var(--ring);
-}
-.page-prices .vtable th {
-  color: var(--muted);
-  font-weight: 600;
-}
-
-/* CTA på slutet */
+/* === CTA BLOCK === */
 .page-prices .cta {
   display: flex;
   align-items: center;
