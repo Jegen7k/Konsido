@@ -65,6 +65,25 @@
     .checkbox a {color:var(--accent);}
   </style>
 </head>
+  <script>
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const closeBtn = document.querySelector('.close-btn');
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.add('open');
+  });
+  closeBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+  });
+  // Stäng menyn när man klickar på en länk
+  mobileMenu.querySelectorAll('a').forEach(link =>
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+    })
+  );
+</script>
+
 
 <body>
   <!-- === NAVIGATION === -->
