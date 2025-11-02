@@ -445,12 +445,18 @@ textarea {
   }
 }
 
-/* === FIX: Hero grid blir staplad på mobil === */
+/* === FIX HERO GRID MOBIL === */
 @media (max-width: 960px) {
   section.hero > .grid {
     display: grid !important;
     grid-template-columns: 1fr !important;
-    gap: 20px !important;
+    grid-template-rows: auto auto !important;
+    gap: 32px !important;
+  }
+
+  section.hero > .grid > .card {
+    width: 100% !important;
   }
 }
+
 
