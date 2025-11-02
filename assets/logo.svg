@@ -1,0 +1,8 @@
+
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6ee7b7"/><stop offset="1" stop-color="#34d399"/></linearGradient></defs>
+  <rect width="120" height="120" rx="24" fill="#0f1216"/>
+  <g transform="translate(20,20)"><path d="M20 60 L40 20 L60 60" fill="none" stroke="url(#g)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="40" cy="70" r="6" fill="#6ee7b7"/></g>
+  <text x="60" y="105" text-anchor="middle" font-size="18" fill="#6ee7b7" font-family="system-ui, -apple-system, Segoe UI, Roboto">Konsido</text>
+</svg>
