@@ -10,60 +10,6 @@
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/logo.svg">
   <link rel="stylesheet" href="assets/style.css">
-  <style>
-    /* Extra finputs för kontaktformulär */
-    form label {display:block;margin-bottom:6px;font-weight:500;}
-    form input, form select, form textarea {
-      width:100%;
-      background:var(--panel,#1e242b);
-      color:var(--ink,#e9edf3);
-      border:1px solid var(--ring,#2f3945);
-      border-radius:6px;
-      padding:8px 10px;
-      font-size:0.95rem;
-      transition:border-color .2s ease;
-    }
-    form input:focus, form select:focus, form textarea:focus {
-      outline:none;
-      border-color:var(--accent,#4ee6c3);
-    }
-    form .row {
-      display:grid;
-      gap:1rem;
-      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-      margin-bottom:1rem;
-    }
-    textarea {min-height:120px;resize:vertical;}
-    .btn {
-      background:var(--accent,#4ee6c3);
-      color:var(--accent-ink,#0d1a17);
-      padding:10px 18px;
-      border:none;
-      border-radius:6px;
-      cursor:pointer;
-      font-weight:600;
-      transition:opacity .25s ease;
-    }
-    .btn:hover {opacity:0.85;}
-    .alert {
-      display:none;
-      margin-top:12px;
-      padding:10px 14px;
-      border-radius:6px;
-      font-size:0.9rem;
-    }
-    .alert.success {
-      background:rgba(78,230,195,0.15);
-      border:1px solid rgba(78,230,195,0.4);
-      color:var(--accent,#4ee6c3);
-    }
-    .alert.error {
-      background:rgba(255,80,80,0.1);
-      border:1px solid rgba(255,80,80,0.4);
-      color:#ff6b6b;
-    }
-    .checkbox a {color:var(--accent);}
-  </style>
 </head>
 
 <body>
@@ -72,33 +18,14 @@
     <div class="nav-left">
       <a href="index.html"><img src="assets/logo.svg" alt="Konsido logotyp"></a>
     </div>
-
     <div class="nav-center">
       <a href="index.html">Start</a>
       <a href="about.html">Om oss</a>
       <a href="prices.html">Priser</a>
       <a href="contact.html" class="active">Kontakt</a>
     </div>
-
     <div class="nav-right">
       <a href="contact.html">Boka introduktion</a>
-    </div>
-
-    <!-- HAMBURGER -->
-    <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <!-- MOBILMENY -->
-    <div class="mobile-menu">
-      <button class="close-btn">✕</button>
-      <a href="index.html">Start</a>
-      <a href="about.html">Om oss</a>
-      <a href="prices.html">Priser</a>
-      <a href="contact.html">Kontakt</a>
-      <a href="contact.html" class="btn-mobile">Boka introduktion</a>
     </div>
   </nav>
 
@@ -111,7 +38,7 @@
 
     <section class="section">
       <div class="card">
-        <form id="konsidoForm" action="https://formspree.io/f/mjkpjlwk" method="POST">
+        <form id="konsidoForm" action="https://formspree.io/f/xxxxxxxx" method="POST">
           <input type="hidden" name="_subject" value="Ny förfrågan via konsido.se">
           <input type="hidden" name="form_name" value="Konsido – Kontakt">
 
@@ -144,7 +71,7 @@
           </div>
 
           <label for="message">Meddelande</label>
-          <textarea id="message" name="message" placeholder="Beskriv ert behov, system (Shopify/Re:amaze) och ungefärlig ärendevolym." required></textarea>
+          <textarea id="message" name="message" placeholder="Beskriv ert behov, system (Shopify/Re:amaze) och ungefärlig ärendevolym."></textarea>
 
           <label class="checkbox" style="display:flex;gap:10px;align-items:flex-start;margin-top:12px;">
             <input id="gdpr" name="gdpr" type="checkbox" required>
@@ -156,67 +83,37 @@
             <span class="small">Eller mejla direkt: <a href="mailto:info@konsido.se">info@konsido.se</a></span>
           </div>
 
-          <div id="alertSuccess" class="alert success" role="status">✅ Tack! Din förfrågan är inskickad.</div>
-          <div id="alertError" class="alert error" role="alert">❌ Något gick fel. Prova igen eller mejla <a href="mailto:info@konsido.se">info@konsido.se</a>.</div>
+          <div id="alertSuccess" class="alert success" role="status">Tack! Din förfrågan är inskickad.</div>
+          <div id="alertError" class="alert error" role="alert">Något gick fel. Prova igen eller mejla <a href="mailto:info@konsido.se">info@konsido.se</a>.</div>
         </form>
       </div>
     </section>
   </main>
 
-  <!-- === FOOTER === -->
   <footer class="footer">
     <div class="container">
       © <span data-year></span> Konsido AB • Organisationsnr: 559549-3965 • <a href="privacy.html">Integritet</a>
     </div>
   </footer>
 
-  <!-- === SCRIPTS === -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // År i footern
-      document.querySelector("[data-year]").textContent = new Date().getFullYear();
-
-      // Formspree-hantering
-      const form = document.getElementById('konsidoForm');
-      const success = document.getElementById('alertSuccess');
-      const error = document.getElementById('alertError');
-
-      if (form) {
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          success.style.display = 'none';
-          error.style.display = 'none';
-          try {
-            const res = await fetch(form.action, {
-              method: 'POST',
-              body: new FormData(form),
-              headers: { 'Accept': 'application/json' }
-            });
-            if (res.ok) {
-              form.reset();
-              success.style.display = 'block';
-              window.scrollTo({ top: form.offsetTop - 100, behavior: 'smooth' });
-            } else {
-              error.style.display = 'block';
-            }
-          } catch {
-            error.style.display = 'block';
-          }
+    document.querySelector("[data-year]").textContent = new Date().getFullYear();
+    const form = document.getElementById('konsidoForm');
+    const success = document.getElementById('alertSuccess');
+    const error = document.getElementById('alertError');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      success.style.display = 'none';
+      error.style.display = 'none';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
         });
-      }
-
-      // Hamburgermeny
-      const hamburger = document.querySelector('.hamburger');
-      const mobileMenu = document.querySelector('.mobile-menu');
-      const closeBtn = document.querySelector('.close-btn');
-
-      if (hamburger && mobileMenu && closeBtn) {
-        hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
-        closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
-        mobileMenu.querySelectorAll('a').forEach(link =>
-          link.addEventListener('click', () => mobileMenu.classList.remove('open'))
-        );
-      }
+        if (res.ok) { form.reset(); success.style.display = 'block'; }
+        else { error.style.display = 'block'; }
+      } catch { error.style.display = 'block'; }
     });
   </script>
 </body>
