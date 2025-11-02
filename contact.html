@@ -65,62 +65,42 @@
     .checkbox a {color:var(--accent);}
   </style>
 </head>
-  <script>
-  const hamburger = document.querySelector('.hamburger');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  const closeBtn = document.querySelector('.close-btn');
-
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.add('open');
-  });
-  closeBtn.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-  });
-  // Stäng menyn när man klickar på en länk
-  mobileMenu.querySelectorAll('a').forEach(link =>
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-    })
-  );
-</script>
-
 
 <body>
   <!-- === NAVIGATION === -->
-<nav>
-  <div class="nav-left">
-    <a href="index.html"><img src="assets/logo.svg" alt="Konsido logotyp"></a>
-  </div>
+  <nav>
+    <div class="nav-left">
+      <a href="index.html"><img src="assets/logo.svg" alt="Konsido logotyp"></a>
+    </div>
 
-  <div class="nav-center">
-    <a href="index.html">Start</a>
-    <a href="about.html">Om oss</a>
-    <a href="prices.html">Priser</a>
-    <a href="contact.html">Kontakt</a>
-  </div>
+    <div class="nav-center">
+      <a href="index.html">Start</a>
+      <a href="about.html">Om oss</a>
+      <a href="prices.html">Priser</a>
+      <a href="contact.html" class="active">Kontakt</a>
+    </div>
 
-  <div class="nav-right">
-    <a href="contact.html">Boka introduktion</a>
-  </div>
+    <div class="nav-right">
+      <a href="contact.html">Boka introduktion</a>
+    </div>
 
-  <!-- HAMBURGER -->
-  <div class="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+    <!-- HAMBURGER -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-  <!-- MOBILMENY -->
-  <div class="mobile-menu">
-    <button class="close-btn">✕</button>
-    <a href="index.html">Start</a>
-    <a href="about.html">Om oss</a>
-    <a href="prices.html">Priser</a>
-    <a href="contact.html">Kontakt</a>
-    <a href="contact.html" class="btn-mobile">Boka introduktion</a>
-  </div>
-</nav>
-
+    <!-- MOBILMENY -->
+    <div class="mobile-menu">
+      <button class="close-btn">✕</button>
+      <a href="index.html">Start</a>
+      <a href="about.html">Om oss</a>
+      <a href="prices.html">Priser</a>
+      <a href="contact.html">Kontakt</a>
+      <a href="contact.html" class="btn-mobile">Boka introduktion</a>
+    </div>
+  </nav>
 
   <!-- === INNEHÅLL === -->
   <main class="container">
@@ -190,35 +170,52 @@
     </div>
   </footer>
 
-  <!-- === SCRIPT === -->
+  <!-- === SCRIPTS === -->
   <script>
-    // År i footern
-    document.querySelector("[data-year]").textContent = new Date().getFullYear();
+    document.addEventListener("DOMContentLoaded", () => {
+      // År i footern
+      document.querySelector("[data-year]").textContent = new Date().getFullYear();
 
-    // Formspree-hantering
-    const form = document.getElementById('konsidoForm');
-    const success = document.getElementById('alertSuccess');
-    const error = document.getElementById('alertError');
+      // Formspree-hantering
+      const form = document.getElementById('konsidoForm');
+      const success = document.getElementById('alertSuccess');
+      const error = document.getElementById('alertError');
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      success.style.display = 'none';
-      error.style.display = 'none';
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
+      if (form) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          success.style.display = 'none';
+          error.style.display = 'none';
+          try {
+            const res = await fetch(form.action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { 'Accept': 'application/json' }
+            });
+            if (res.ok) {
+              form.reset();
+              success.style.display = 'block';
+              window.scrollTo({ top: form.offsetTop - 100, behavior: 'smooth' });
+            } else {
+              error.style.display = 'block';
+            }
+          } catch {
+            error.style.display = 'block';
+          }
         });
-        if (res.ok) {
-          form.reset();
-          success.style.display = 'block';
-          window.scrollTo({ top: form.offsetTop - 100, behavior: 'smooth' });
-        } else {
-          error.style.display = 'block';
-        }
-      } catch (err) {
-        error.style.display = 'block';
+      }
+
+      // Hamburgermeny
+      const hamburger = document.querySelector('.hamburger');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      const closeBtn = document.querySelector('.close-btn');
+
+      if (hamburger && mobileMenu && closeBtn) {
+        hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+        closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        mobileMenu.querySelectorAll('a').forEach(link =>
+          link.addEventListener('click', () => mobileMenu.classList.remove('open'))
+        );
       }
     });
   </script>
