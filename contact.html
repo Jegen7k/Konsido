@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kontakt – Konsido AB</title>
+  <meta name="description" content="Kontakta Konsido AB för offert eller introduktion.">
+  <meta property="og:title" content="Kontakt – Konsido AB">
+  <meta property="og:description" content="Kontakta Konsido AB för offert eller introduktion.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/logo.svg">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+  <!-- === NAVIGATION === -->
+  <nav>
+    <div class="nav-left">
+      <a href="index.html"><img src="assets/logo.svg" alt="Konsido logotyp"></a>
+    </div>
+    <div class="nav-center">
+      <a href="index.html">Start</a>
+      <a href="testimonials.html">Kundberättelser</a>
+      <a href="about.html">Om oss</a>
+      <a href="prices.html">Priser</a>
+      <a href="contact.html" class="active">Kontakt</a>
+    </div>
+    <div class="nav-right">
+      <a href="contact.html">Boka introduktion</a>
+    </div>
+  </nav>
+
+  <!-- === INNEHÅLL === -->
+  <main class="container">
+    <section class="page-title">
+      <h1>Kontakt</h1>
+      <p class="lead">Berätta kort om ert behov, system och ungefärlig ärendevolym. Vi återkommer inom 24–48h (vardagar).</p>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <form id="konsidoForm" action="https://formspree.io/f/xxxxxxxx" method="POST">
+          <input type="hidden" name="_subject" value="Ny förfrågan via konsido.se">
+          <input type="hidden" name="form_name" value="Konsido – Kontakt">
+
+          <div class="row">
+            <div>
+              <label for="name">Namn</label>
+              <input id="name" name="name" type="text" placeholder="För- och efternamn" required>
+            </div>
+            <div>
+              <label for="email">E-post</label>
+              <input id="email" name="_replyto" type="email" placeholder="namn@företag.se" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="phone">Telefon (valfritt)</label>
+              <input id="phone" name="phone" type="tel" placeholder="+46 …">
+            </div>
+            <div>
+              <label for="topic">Ämne</label>
+              <select id="topic" name="topic" required>
+                <option value="" disabled selected>Välj ett alternativ</option>
+                <option>Offert / prisförfrågan</option>
+                <option>Onboarding / uppstart</option>
+                <option>Teknik / rapporter</option>
+                <option>Annat</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="message">Meddelande</label>
+          <textarea id="message" name="message" placeholder="Beskriv ert behov, system (Shopify/Re:amaze) och ungefärlig ärendevolym."></textarea>
+
+          <label class="checkbox" style="display:flex;gap:10px;align-items:flex-start;margin-top:12px;">
+            <input id="gdpr" name="gdpr" type="checkbox" required>
+            <span>Jag godkänner att Konsido AB lagrar och behandlar mina uppgifter för att besvara min förfrågan enligt vår <a href="privacy.html">integritetspolicy</a>.</span>
+          </label>
+
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px;">
+            <button class="btn" type="submit">Skicka förfrågan</button>
+            <span class="small">Eller mejla direkt: <a href="mailto:info@konsido.se">info@konsido.se</a></span>
+          </div>
+
+          <div id="alertSuccess" class="alert success" role="status">Tack! Din förfrågan är inskickad.</div>
+          <div id="alertError" class="alert error" role="alert">Något gick fel. Prova igen eller mejla <a href="mailto:info@konsido.se">info@konsido.se</a>.</div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © <span data-year></span> Konsido AB • Organisationsnr: 559549-3965 • <a href="privacy.html">Integritet</a>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector("[data-year]").textContent = new Date().getFullYear();
+    const form = document.getElementById('konsidoForm');
+    const success = document.getElementById('alertSuccess');
+    const error = document.getElementById('alertError');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      success.style.display = 'none';
+      error.style.display = 'none';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) { form.reset(); success.style.display = 'block'; }
+        else { error.style.display = 'block'; }
+      } catch { error.style.display = 'block'; }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sidan saknas – Konsido AB</title>
+    <meta name="description" content="Sidan kunde inte hittas." />
+    <meta property="og:title" content="Sidan saknas – Konsido AB" />
+    <meta property="og:description" content="Sidan kunde inte hittas." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="assets/logo.svg" />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-left">
+        <a href="index.html"><img src="assets/logo.svg" alt="Konsido logotyp"></a>
+      </div>
+      <div class="nav-center">
+        <a href="index.html">Start</a>
+        <a href="testimonials.html">Kundberättelser</a>
+        <a href="about.html">Om oss</a>
+        <a href="prices.html">Priser</a>
+        <a href="contact.html">Kontakt</a>
+      </div>
+      <div class="nav-right">
+        <a href="contact.html">Boka introduktion</a>
+      </div>
+    </nav>
+    
+
+    <!-- Innehåll -->
+    <main class="container">
+      <section class="page-title center">
+        <h1>404 – Sidan kunde inte hittas</h1>
+        <p class="lead">
+          Länken kan vara felaktig eller sidan har tagits bort.
+        </p>
+        <p><a class="btn" href="index.html">Till startsidan</a></p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        © <span data-year></span> Konsido AB • Organisationsnr: 559999-0000 •
+        <a href="privacy.html">Integritet</a>
+      </div>
+    </footer>
+
+    <script src="assets/app.js"></script>
+    <script>
+      // Sätter aktuellt år i footern
+      document.querySelector('[data-year]').textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>
