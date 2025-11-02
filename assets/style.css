@@ -355,7 +355,8 @@ textarea {
 }
 
 /* === CTA BLOCK === */
-.page-prices .cta {
+.page-prices .cta,
+.section .cta {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -369,12 +370,14 @@ textarea {
   border-radius: 14px;
   margin-top: 24px;
 }
-.page-prices .cta .btn {
+.page-prices .cta .btn,
+.section .cta .btn {
   background: var(--accent);
   color: var(--accent-ink);
 }
 @media (max-width: 700px) {
-  .page-prices .cta {
+  .page-prices .cta,
+  .section .cta {
     flex-direction: column;
     gap: 12px;
     text-align: center;
@@ -469,4 +472,3 @@ textarea {
     display: none !important;
   }
 }
-
