@@ -444,3 +444,13 @@ textarea {
     display: none !important;
   }
 }
+
+/* === FIX: Hero grid blir staplad på mobil === */
+@media (max-width: 960px) {
+  section.hero > .grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+
