@@ -677,15 +677,14 @@ textarea {
   transform: rotate(-45deg) translate(4px, -5px);
 }
 
-/* === MOBILMENY – PREMIUMVERSION === */
+/* === MOBILMENY – FIXAD VERSION === */
 .mobile-menu {
-  display: none;                /* dold som standard */
   position: fixed;
-  top: 70px;                    /* justera om din navbar är högre/lägre */
+  top: -100vh; /* flyttas utanför skärmen */
   left: 0;
   width: 100%;
   background: rgba(30, 36, 43, 0.9); /* halvtransparent panel */
-  backdrop-filter: blur(12px);       /* lätt glas-effekt */
+  backdrop-filter: blur(12px);
   border-top: 1px solid var(--ring);
   flex-direction: column;
   align-items: center;
@@ -693,15 +692,15 @@ textarea {
   padding: 24px 0;
   z-index: 999;
   opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none; /* inaktiverar klick */
+  transition: top 0.3s ease, opacity 0.3s ease;
 }
 
-/* När menyn är aktiv */
 .mobile-menu.active {
-  display: flex;
+  top: 70px;
   opacity: 1;
-  transform: translateY(0);
+  pointer-events: auto; /* nu går den att klicka */
+  display: flex;
 }
 
 /* Länkar i mobilmenyn */
@@ -722,7 +721,6 @@ textarea {
     display: none !important;
   }
 }
-
 
 
 
