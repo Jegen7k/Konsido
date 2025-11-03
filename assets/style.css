@@ -725,3 +725,27 @@ textarea {
   }
 }
 
+
+/* === SAFARI-FIX === */
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  nav {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  .mobile-menu {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* Ibland krävs detta för att Safari ska “rita” om elementet korrekt */
+.mobile-menu {
+  will-change: transform, opacity, top;
+}
+
+/* Och för säkerhets skull: */
+html, body {
+  -webkit-text-size-adjust: 100%;
+}
+
+
