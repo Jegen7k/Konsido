@@ -13,7 +13,8 @@
 * {
   box-sizing: border-box;
 }
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   background: var(--bg);
@@ -49,7 +50,7 @@ nav {
   border-bottom: 1px solid var(--ring);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* centrera menyn i mitten */
   z-index: 1000;
 }
 
@@ -104,104 +105,31 @@ nav {
 
 /* Luft under menyn */
 main {
-  padding-top: 120px;
+  padding-top: 120px; /* ändra till 120px eller 130px om text ligger för högt */
 }
 
-/* === RESPONSIVE NAVIGATION === */
+/* === RESPONSIVE === */
 @media (max-width: 960px) {
   nav {
     height: 60px;
     justify-content: space-between;
     padding: 0 20px;
   }
-  .nav-center,
-  .nav-right {
+  .nav-center {
     display: none;
   }
   .nav-left {
     left: 20px;
+  }
+  .nav-right {
+    right: 20px;
   }
   main {
     padding-top: 80px;
   }
 }
 
-/* === HAMBURGERMENY === */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 22px;
-  height: 18px;
-  cursor: pointer;
-  position: absolute;
-  right: 24px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1100;
-}
-.hamburger span {
-  height: 3px;
-  width: 100%;
-  background: var(--ink);
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(4px, 5px);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(4px, -5px);
-}
-
-/* === MOBILMENY (Safari-kompatibel) === */
-.mobile-menu {
-  position: fixed;
-  top: -100vh;
-  left: 0;
-  width: 100%;
-  background: rgba(23, 28, 33, 0.97);
-  backdrop-filter: blur(12px);
-  border-top: 1px solid var(--ring);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 22px;
-  padding: 32px 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: top 0.35s ease, opacity 0.35s ease;
-  z-index: 900;
-}
-.mobile-menu.active {
-  top: 60px;
-  opacity: 1;
-  pointer-events: auto;
-}
-.mobile-menu a {
-  color: var(--ink);
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.95rem;
-  transition: color 0.2s ease;
-}
-.mobile-menu a:hover {
-  color: var(--accent);
-}
-
-/* Dölj helt på desktop */
-@media (min-width: 961px) {
-  .mobile-menu {
-    display: none !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
-}
-
-/* === RESTEN AV STILARNA (kortade ej, du kan behålla som de är) === */
+/* === KORT & SEKTIONER === */
 .card {
   background: linear-gradient(180deg, var(--panel), #11151c);
   border: 1px solid var(--ring);
@@ -210,5 +138,509 @@ main {
   box-shadow: var(--shadow);
 }
 
-/* TEXT, PLANER, ADDONS, FOOTER ETC — (samma som din version ovan) */
-/* ... allt under detta kan du behålla oförändrat ... */
+/* === TEXT === */
+h1 {
+  font-size: 44px;
+  line-height: 1.1;
+  margin: 0 0 10px;
+}
+h2 {
+  margin: 0 0 10px;
+}
+.lead {
+  color: var(--muted);
+  font-size: 18px;
+  margin: 0 0 16px;
+}
+.small {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* === BADGE === */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(110, 231, 183, 0.12);
+  border: 1px solid rgba(110, 231, 183, 0.25);
+  color: var(--accent);
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 6px 12px;
+  margin-bottom: 14px;
+}
+
+/* === LISTOR === */
+.points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+.point {
+  display: flex;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* === SEKTIONER & GRID === */
+.section {
+  padding: 36px 0;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 18px;
+}
+@media (max-width: 960px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+/* === PRISPLANER GRID === */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.plan-card {
+  background: linear-gradient(180deg, var(--panel), #11151c);
+  border: 1px solid var(--ring);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, border-color 0.3s ease;
+}
+.plan-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+.plan-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  margin-top: 10px;
+}
+.plan-card.active .plan-details {
+  max-height: 400px; /* tillräckligt stort för hela texten */
+}
+
+.plan-toggle {
+  color: var(--accent);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.plan-toggle:hover {
+  text-decoration: underline;
+}
+
+/* === MOBILANPASSNING === */
+@media (max-width: 960px) {
+  .plans-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+
+/* === FIX: Se till att inget innehåll hamnar under menyn === */
+body {
+  padding-top: 100px !important;
+}
+@media (max-width: 960px) {
+  body {
+    padding-top: 80px !important;
+  }
+}
+
+/* === KPI === */
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #0c1015;
+  border: 1px solid var(--ring);
+  border-radius: 12px;
+  padding: 18px;
+}
+.kpi strong {
+  font-size: 28px;
+}
+
+/* === FOOTER === */
+.footer {
+  padding: 28px 0;
+  color: var(--muted);
+  border-top: 1px solid var(--ring);
+  margin-top: 36px;
+}
+
+/* === RESPONSIVE NAV === */
+@media (max-width: 960px) {
+  nav {
+    padding: 0 20px;
+    height: 60px;
+  }
+
+  nav .nav-center {
+    display: none; /* göms tills hamburgermeny finns */
+  }
+
+  nav .nav-left img {
+    height: 26px;
+  }
+
+  nav .nav-right a {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  main {
+    padding-top: 80px;
+  }
+}
+/* === FORMULÄR === */
+form {
+  display: grid;
+  gap: 14px;
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 560px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+input,
+select,
+textarea {
+  width: 100%;
+  background: #0d1116;
+  border: 1px solid var(--ring);
+  color: var(--ink);
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(78, 230, 195, 0.12);
+}
+textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+.alert {
+  display: none;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid;
+}
+.alert.success {
+  color: #d1fae5;
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.35);
+}
+.alert.error {
+  color: #ffe1e1;
+  background: rgba(255, 107, 107, 0.1);
+  border-color: rgba(255, 107, 107, 0.35);
+}
+/* === PRICES-SIDA === */
+.page-prices .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.page-prices .page-title {
+  margin: 24px 0;
+}
+
+.page-prices .lead {
+  color: var(--muted);
+}
+
+/* Grid för planerna */
+.page-prices .plans-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .page-prices .plans-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Kort */
+.page-prices .plan-card {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--ring);
+  border-radius: 18px;
+  padding: 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.page-prices .plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+  border-color: var(--accent);
+}
+
+/* Rekommenderad plan */
+.page-prices .plan-card.reco {
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 20px rgba(78, 230, 195, 0.15);
+}
+
+/* Badges */
+.page-prices .badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* Pris-tabeller */
+.page-prices .pricing {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+.page-prices .pricing td {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: top;
+}
+.page-prices .price {
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 10px;
+}
+.page-prices .small {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Toggle-knapp och detaljer */
+.page-prices .plan-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 600;
+  user-select: none;
+}
+.page-prices .plan-toggle .chev {
+  transition: transform 0.25s ease;
+}
+.page-prices .plan-card.active .plan-toggle .chev {
+  transform: rotate(180deg);
+}
+
+/* Dolda detaljer */
+.page-prices .plan-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+  opacity: 0;
+  margin-top: 0;
+}
+.page-prices .plan-card.active .plan-details {
+  max-height: 600px;
+  opacity: 1;
+  margin-top: 10px;
+}
+.page-prices .plan-details ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* Volympriser och tillägg */
+.page-prices .vtable {
+  width: 100%;
+  border-collapse: collapse;
+}
+.page-prices .vtable th,
+.page-prices .vtable td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--ring);
+}
+.page-prices .vtable th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* CTA på slutet */
+.page-prices .cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(
+    135deg,
+    rgba(31, 110, 235, 0.1),
+    rgba(14, 165, 163, 0.1)
+  );
+  border: 1px solid var(--ring);
+  padding: 20px;
+  border-radius: 14px;
+  margin-top: 24px;
+}
+.page-prices .cta .btn {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+@media (max-width: 700px) {
+  .page-prices .cta {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+/* === TILLÄGG (ADDONS) === */
+.addons-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.addon {
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.addon.active {
+  background: linear-gradient(145deg, var(--card, #171c21), #1d242d);
+  box-shadow: 0 0 12px rgba(78, 230, 195, 0.3);
+  border: 1px solid var(--accent);
+}
+
+/* Toggle-knapp */
+.addon-toggle {
+  cursor: pointer;
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-top: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s ease;
+}
+.addon-toggle:hover {
+  color: #5fffd6;
+}
+
+/* Pilrotation vid öppning */
+.addon.active .chev {
+  transform: rotate(180deg);
+}
+.chev {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* Detaljsektionen */
+.addon-details {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+  margin-top: 0.6rem;
+}
+.addon-details ul {
+  padding-left: 1.3rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* === MOBILANPASSNING – ENKEL LÖSNING FÖR PRISER === */
+@media (max-width: 960px) {
+  /* Gör att planerna staplas på mobil */
+  .plans-grid {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+  }
+
+  /* Gör att tilläggen staplas på mobil */
+  .addons-grid {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+  }
+
+  /* Låt varje kort ta full bredd */
+  .plan-card,
+  .addon {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Gör text lite mindre */
+  .plan-card h3,
+  .addon h3 {
+    font-size: 1.2rem;
+  }
+
+  /* Justera container-padding */
+  .container {
+    padding: 0 16px;
+  }
+
+  /* Gör att plan-detaljer expanderar snyggt på mobil */
+  .plan-details,
+  .addon-details {
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+  }
+}
+
+.main-sections {
+  display: flex;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .main-sections {
+    flex-direction: column;
+  }
+}
+@media (max-width: 768px) {
+  body {
+    background: #222;
+  }
+}
+@media (max-width: 960px) {
+  .hero .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
