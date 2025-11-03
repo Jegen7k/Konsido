@@ -7,18 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
     yearSpan.textContent = new Date().getFullYear();
   }
 
-  // === Hamburgermeny ===
-const hamburger = document.getElementById("hamburger");
-const mobileMenu = document.getElementById("mobile-menu");
+  // === 2. Hamburgermeny ===
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobile-menu");
 
-if (hamburger && mobileMenu) {
-  hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    mobileMenu.classList.toggle("active");
-  });
-}
-
-  
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      mobileMenu.classList.toggle("active");
+    });
+  }
 
   // === 3. Prisplaner (Prices-sidan) ===
   const planCards = document.querySelectorAll(".plan-card");
@@ -96,4 +94,5 @@ if (hamburger && mobileMenu) {
       }
     });
   }
+
 });
