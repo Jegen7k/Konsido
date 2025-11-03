@@ -12,5 +12,43 @@ if (hamburger && mobileMenu) {
   hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active");
     mobileMenu.classList.toggle("active");
+        document.addEventListener("DOMContentLoaded", () => {
+      // År i footern
+      document.querySelector("[data-year]").textContent = new Date().getFullYear();
+
+      // PLANER
+      const planCards = document.querySelectorAll(".plan-card");
+      planCards.forEach(card => {
+        const toggle = card.querySelector(".plan-toggle");
+        const details = card.querySelector(".plan-details");
+        toggle.addEventListener("click", () => {
+          const isActive = card.classList.contains("active");
+          planCards.forEach(c => {
+            c.classList.remove("active");
+            c.querySelector(".plan-details").style.maxHeight = null;
+          });
+          if (!isActive) {
+            card.classList.add("active");
+            details.style.maxHeight = details.scrollHeight + "px";
+          }
+        });
+      });
+
+      // TILLÄGG
+      const addonCards = document.querySelectorAll(".addon");
+      addonCards.forEach(card => {
+        const toggle = card.querySelector(".addon-toggle");
+        const details = card.querySelector(".addon-details");
+        toggle.addEventListener("click", e => {
+          e.stopPropagation();
+          const isActive = card.classList.contains("active");
+          addonCards.forEach(c => {
+            c.classList.remove("active");
+            c.querySelector(".addon-details").style.maxHeight = null;
+          });
+          if (!isActive) {
+            card.classList.add("active");
+            details.style.maxHeight = details.scrollHeight + "px";
+          }
   });
 }
