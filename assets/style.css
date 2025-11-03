@@ -749,3 +749,16 @@ html, body {
 }
 
 
+
+/* === FIX: RESPONSIV TABELL FÖR MOBIL === */
+.page-prices .vtable-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.page-prices .vtable {
+  min-width: 600px; /* låt kolumnerna få plats */
+  border-collapse: collapse;
+}
+
