@@ -677,44 +677,52 @@ textarea {
   transform: rotate(-45deg) translate(4px, -5px);
 }
 
-/* Mobilmeny-panel */
+/* === MOBILMENY – PREMIUMVERSION === */
 .mobile-menu {
-  display: none;
+  display: none;                /* dold som standard */
   position: fixed;
-  top: 60px;
+  top: 70px;                    /* justera om din navbar är högre/lägre */
   left: 0;
   width: 100%;
-  background: var(--panel);
+  background: rgba(30, 36, 43, 0.9); /* halvtransparent panel */
+  backdrop-filter: blur(12px);       /* lätt glas-effekt */
   border-top: 1px solid var(--ring);
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  padding: 20px 0;
-  z-index: 1000;
+  padding: 24px 0;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
+
+/* När menyn är aktiv */
+.mobile-menu.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Länkar i mobilmenyn */
 .mobile-menu a {
   color: var(--ink);
   font-weight: 600;
   text-transform: uppercase;
+  font-size: 0.95rem;
   transition: color 0.2s ease;
 }
 .mobile-menu a:hover {
   color: var(--accent);
 }
 
-/* Visa hamburgaren & dölj center-menyn på mobil */
-@media (max-width: 960px) {
-  .hamburger {
-    display: flex;
-  }
-  .nav-center,
-  .nav-right {
-    display: none;
-  }
-  .mobile-menu.active {
-    display: flex;
+/* Dölj helt på desktop */
+@media (min-width: 961px) {
+  .mobile-menu {
+    display: none !important;
   }
 }
+
 
 
 
