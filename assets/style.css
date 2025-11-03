@@ -621,3 +621,15 @@ textarea {
   }
 }
 
+.main-sections {
+  display: flex;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .main-sections {
+    flex-direction: column;
+  }
+}
+
+
