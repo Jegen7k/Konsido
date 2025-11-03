@@ -631,5 +631,16 @@ textarea {
     flex-direction: column;
   }
 }
+@media (max-width: 768px) {
+  body {
+    background: #222;
+  }
+}
+@media (max-width: 960px) {
+  .hero .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 
