@@ -18,16 +18,8 @@ html, body {
   color: var(--ink);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
 }
-a {
-  color: var(--ink);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-.container {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+a { color: var(--ink); text-decoration: none; transition: color 0.2s ease; }
+.container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
 
 /* === NAVIGATION === */
 nav {
@@ -52,6 +44,7 @@ nav {
   transform: translateY(-50%);
 }
 .nav-left img { height: 28px; width: auto; }
+
 .nav-center {
   display: flex;
   gap: 28px;
@@ -63,6 +56,7 @@ nav {
   transition: 0.2s ease;
 }
 .nav-center a:hover, .nav-center a.active { color: var(--accent); }
+
 .nav-right {
   position: absolute;
   right: 40px;
@@ -80,12 +74,12 @@ nav {
 }
 .nav-right a:hover { filter: brightness(1.05); transform: translateY(-1px); }
 
-/* === HAMBURGERMENY === */
+/* === HAMBURGER === */
 .hamburger {
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 22px;
+  width: 24px;
   height: 18px;
   cursor: pointer;
   position: absolute;
@@ -101,15 +95,11 @@ nav {
   border-radius: 2px;
   transition: all 0.3s ease;
 }
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(4px, 5px);
-}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(4px, -5px);
-}
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
 
-/* === MOBILMENY (KOMPATIBEL I SAFARI & CHROME) === */
+/* === MOBILMENY === */
 .mobile-menu {
   position: fixed;
   top: 70px;
@@ -146,7 +136,7 @@ nav {
 
 /* === RESPONSIVE === */
 @media (max-width: 960px) {
-  .nav-center, .nav-right { display: none; }
+  .nav-center, .nav-right { display: none !important; }
   .hamburger { display: flex; }
   nav {
     height: 60px;
@@ -183,7 +173,7 @@ h2 { margin: 0 0 10px; }
   margin-top: 36px;
 }
 
-/* === PAGE: PRICES === */
+/* === PRICES === */
 .page-prices .plans-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -198,20 +188,14 @@ h2 { margin: 0 0 10px; }
   box-shadow: var(--shadow);
   transition: transform 0.25s ease, border-color 0.25s ease;
 }
-.page-prices .plan-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--accent);
-}
+.page-prices .plan-card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .page-prices .plan-details {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease, opacity 0.3s ease;
   opacity: 0;
 }
-.page-prices .plan-card.active .plan-details {
-  max-height: 600px;
-  opacity: 1;
-}
+.page-prices .plan-card.active .plan-details { max-height: 600px; opacity: 1; }
 .page-prices .plan-toggle {
   color: var(--accent);
   cursor: pointer;
@@ -223,7 +207,7 @@ h2 { margin: 0 0 10px; }
 }
 .page-prices .plan-toggle:hover { text-decoration: underline; }
 
-/* === FORMULÄR === */
+/* === FORM === */
 form { display: grid; gap: 14px; }
 input, select, textarea {
   width: 100%;
@@ -239,6 +223,6 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 0 4px rgba(78, 230, 195, 0.12);
 }
 
-/* === SLUTFIX === */
+/* === FIXAR === */
 @media (max-width: 960px) { body { padding-top: 80px !important; } }
 @media (min-width: 961px) { .hamburger { display: none !important; } }
