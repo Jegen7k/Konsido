@@ -641,6 +641,15 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+/* === FIX FÖR FEL PLACERAD MOBILMENY PÅ DESKTOP === */
+@media (min-width: 961px) {
+  .mobile-menu {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+  }
+}
 
 
 
