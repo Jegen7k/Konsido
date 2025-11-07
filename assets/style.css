@@ -761,3 +761,65 @@ html, body {
   min-width: 600px; /* låt kolumnerna få plats */
   border-collapse: collapse;
 }
+
+
+
+
+/* === Förbättrad spacing och typografi för "Vi tar hand om era kunder"-sektionen === */
+.section.about-support {
+  padding: 100px 0;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.card {
+  background: #111418;
+  border-radius: 1.5rem;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  color: #e9ecef;
+}
+.card h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+.card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #00bfa6;
+}
+.card p.lead {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #cdd2d6;
+}
+.bullet-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: #d0d4d8;
+}
+.styled-list li {
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
+.styled-list strong {
+  color: #fff;
+}
+@media (max-width: 900px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    padding: 2rem;
+  }
+  .bullet-grid {
+    grid-template-columns: 1fr;
+  }
+}
