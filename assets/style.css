@@ -762,3 +762,65 @@ html, body {
   border-collapse: collapse;
 }
 
+.section.why-us {
+  background: #f9fafb;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.section.why-us h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.section.why-us .lead.center {
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  color: #555;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  padding: 0 1rem;
+}
+
+.why-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+.icon-circle {
+  width: 55px;
+  height: 55px;
+  background-color: #00bfa6; /* Konsido turkos */
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.why-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: #111;
+}
+
+.why-card p {
+  color: #555;
+  line-height: 1.6;
+}
