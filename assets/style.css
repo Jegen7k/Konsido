@@ -769,49 +769,56 @@ html, body {
 .section.about-support {
   padding: 100px 0;
 }
+
+/* Layout mellan vänster/höger kolumn */
 .info-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 3rem;
   align-items: start;
 }
+
+/* Allmän spacing för kort */
 .card {
-  background: #11151c;
   border-radius: 1.5rem;
   padding: 3rem 2.5rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  color: #e9ecef;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  line-height: 1.7;
 }
+
+/* Rubrikspacing */
 .card h2 {
   font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #fff;
+  margin-bottom: 1.2rem;
 }
+
 .card h3 {
   font-size: 1.4rem;
   margin-bottom: 1rem;
-  color: #00bfa6;
 }
+
+/* Textflöde */
 .card p.lead {
   font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  color: #cdd2d6;
+  margin-bottom: 1.8rem;
 }
+
+/* Punkter med lite mer luft och jämnhet */
 .bullet-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.8rem 1.5rem;
-  margin-top: 1.5rem;
+  gap: 1rem 2rem;
+  margin-top: 2rem;
   font-size: 0.95rem;
-  color: #d0d4d8;
 }
+
+/* Punktlista i högerspalten */
 .styled-list li {
-  margin-bottom: 1.2rem;
-  line-height: 1.6;
+  margin-bottom: 1.3rem;
+  line-height: 1.7;
 }
-.styled-list strong {
-  color: #fff;
-}
+
+/* Mobilanpassning */
 @media (max-width: 900px) {
   .info-grid {
     grid-template-columns: 1fr;
@@ -823,3 +830,4 @@ html, body {
     grid-template-columns: 1fr;
   }
 }
+
