@@ -10,7 +10,8 @@
 </head>
 
 <body class="page-prices">
-
+  
+<!-- === NAVIGATION === -->
 <nav>
   <div class="nav-left">
     <a href="index.html"><img src="assets/logo.svg" alt="Konsido logotyp"></a>
@@ -27,11 +28,15 @@
     <a href="contact.html">Boka introduktion</a>
   </div>
 
+  <!-- Hamburgermeny -->
   <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </nav>
 
+<!-- Mobilmenyn -->
 <div class="mobile-menu" id="mobile-menu">
   <a href="index.html">Start</a>
   <a href="about.html">Om oss</a>
@@ -40,141 +45,214 @@
   <a href="contact.html" class="cta">Boka introduktion</a>
 </div>
 
-<main class="container">
 
-  <section class="page-title">
-    <h1>Priser</h1>
-    <p class="lead">Välj ett paket eller volymbaserad prissättning. Full transparens – inga dolda avgifter.</p>
-  </section>
 
-  <!-- Paketplaner -->
-  <section class="section">
-    <h2>Paket – fast pris per månad</h2>
-    <div id="plans" class="plans-grid">
+  <!-- === INNEHÅLL === -->
+  <main class="container">
 
-      <!-- BASIC -->
-      <div class="plan-card" data-plan="Basic">
-        <span class="badge">Populär start</span>
-        <h3>Basic</h3>
-        <p class="lead">För mindre e-handlare som vill släppa kundmailen helt och frigöra tid.</p>
-        <table class="pricing">
-          <tr><td>Volym</td><td>Upp till 300 ärenden/mån</td></tr>
-          <tr><td>Kanaler</td><td>E-post</td></tr>
-          <tr><td>Rapportering</td><td>Grundläggande månadsrapport</td></tr>
-          <tr><td>Innehåll</td><td>Full hantering av vanliga kundärenden</td></tr>
-        </table>
-        <p class="price">2 990 kr/mån ex. moms</p>
-        <p class="small">Extra ärenden: 20 kr/st</p>
+    <section class="page-title">
+      <h1>Priser</h1>
+      <p class="lead">Välj ett paket eller volymbaserad prissättning. Full transparens – inga dolda avgifter.</p>
+    </section>
+
+    <!-- Paketplaner -->
+    <section class="section">
+      <h2>Paket – fast pris per månad</h2>
+      <div id="plans" class="plans-grid">
+
+        <!-- BASIC -->
+        <div class="plan-card" data-plan="Basic">
+          <span class="badge">Populär start</span>
+          <h3>Basic</h3>
+          <p class="lead">För mindre e-handlare som vill släppa kundmailen helt och frigöra tid.</p>
+          <table class="pricing">
+            <tr><td>Volym</td><td>Upp till 300 ärenden/mån</td></tr>
+            <tr><td>Kanaler</td><td>E-post</td></tr>
+            <tr><td>Rapportering</td><td>Grundläggande månadsrapport</td></tr>
+            <tr><td>Innehåll</td><td>Full hantering av vanliga kundärenden</td></tr>
+          </table>
+          <p class="price">2 990 kr/mån ex. moms</p>
+          <p class="small">Extra ärenden: 20 kr/st</p>
+          <div class="plan-toggle"><span class="chev">▾</span><span>Visa mer om Basic</span></div>
+          <div class="plan-details">
+            <ul>
+              <li>Startklar onboarding och färdiga mallar</li>
+              <li>Hantering av kundmail, produkt- och leveransfrågor</li>
+              <li>Standardiserade makron & FAQ-stöd</li>
+              <li>Enkel rapport med överblick över volym och trender</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- GROWTH -->
+        <div class="plan-card" data-plan="Growth">
+          <h3>Growth</h3>
+          <p class="lead">För växande butiker som vill ha mer struktur, tydlighet och återkommande insikter.</p>
+          <table class="pricing">
+            <tr><td>Volym</td><td>Upp till 600 ärenden/mån</td></tr>
+            <tr><td>Kanaler</td><td>E-post</td></tr>
+            <tr><td>Rapportering</td><td>Vecko- och månadsrapporter</td></tr>
+            <tr><td>Analys</td><td>Enkel identifiering av topporsaker</td></tr>
+          </table>
+          <p class="price">6 990 kr/mån ex. moms</p>
+          <p class="small">Extra ärenden: 15 kr/st</p>
+          <div class="plan-toggle"><span class="chev">▾</span><span>Visa mer om Growth</span></div>
+          <div class="plan-details">
+            <ul>
+              <li>Full kundhantering inklusive byten, returer och krediteringar</li>
+              <li>Vecko- och månadsrapporter med nyckeltal</li>
+              <li>Makron- och FAQ-optimering</li>
+              <li>Grundläggande ärendeanalys för förbättring</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SCALE -->
+        <div class="plan-card" data-plan="Scale">
+          <h3>Scale</h3>
+          <p class="lead">För butiker som växer snabbt och behöver mer kontinuerlig uppföljning, djupare rapporter och bättre översikt.</p>
+          <table class="pricing">
+            <tr><td>Volym</td><td>Upp till 1 500 ärenden/mån</td></tr>
+            <tr><td>Kanaler</td><td>E-post (chatt kan läggas till)</td></tr>
+            <tr><td>Rapportering</td><td>Re:amaze + Google Sheets</td></tr>
+            <tr><td>Analys</td><td>Månadsvis analys av trender och topporsaker</td></tr>
+          </table>
+          <p class="price">11 900 kr/mån ex. moms</p>
+          <p class="small">Extra ärenden: 12 kr/st</p>
+          <div class="plan-toggle"><span class="chev">▾</span><span>Visa mer om Scale</span></div>
+          <div class="plan-details">
+            <ul>
+              <li>Månadsvis analys med tydlig rapportering</li>
+              <li>Utökad uppföljning av kundärenden</li>
+              <li>Google Sheets-rapportering i realtid</li>
+              <li>Förslag på förbättringar av FAQ och makron</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="plan-card reco" data-plan="Premium">
+          <span class="badge">Rekommenderad</span>
+          <h3>Premium</h3>
+          <p class="lead">För etablerade varumärken som vill ha komplett kundservice med mätbar kvalitet och djupanalys.</p>
+          <table class="pricing">
+            <tr><td>Volym</td><td>Upp till 3 000 ärenden/mån</td></tr>
+            <tr><td>Kanaler</td><td>E-post (chatt kan läggas till)</td></tr>
+            <tr><td>Rapportering</td><td>Re:amaze + Google Sheets</td></tr>
+            <tr><td>Analys</td><td>Djupanalys & topporsaker till ärenden</td></tr>
+          </table>
+          <p class="price">17 900 kr/mån ex. moms</p>
+          <p class="small">Extra ärenden: 10 kr/st</p>
+          <div class="plan-toggle"><span class="chev">▾</span><span>Visa mer om Premium</span></div>
+          <div class="plan-details">
+            <ul>
+              <li>Kvalitetskontroller och trendanalys</li>
+              <li>Förslag på förbättring av interna processer</li>
+              <li>Klarna-ärenden och dispythantering</li>
+              <li>Veckosammanfattningar med KPI:er och nyckeltal</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ENTERPRISE -->
+        <div class="plan-card" data-plan="Enterprise">
+          <h3>Enterprise</h3>
+          <p class="lead">För högvolymbutiker som kräver full transparens, datadriven styrning och kontinuerlig förbättring.</p>
+          <table class="pricing">
+            <tr><td>Volym</td><td>3 000–6 000+ ärenden/mån</td></tr>
+            <tr><td>Kanaler</td><td>E-post, chatt, sociala medier (valfritt)</td></tr>
+            <tr><td>Rapportering</td><td>Avancerad KPI-uppföljning & förbättringsplan</td></tr>
+            <tr><td>Analys</td><td>Orsaksanalyser, processflöden & kvalitetsmätning</td></tr>
+          </table>
+          <p class="price">fr. 29 900 kr/mån ex. moms</p>
+          <p class="small">Extra ärenden: offert (volymrabatt)</p>
+          <div class="plan-toggle"><span class="chev">▾</span><span>Visa mer om Enterprise</span></div>
+          <div class="plan-details">
+            <ul>
+              <li>Dedikerat team & prioriterad kommunikation</li>
+              <li>SLA, KPI och eskalering definierad</li>
+              <li>Skräddarsydda rapporter & dashboards</li>
+              <li>Löpande förbättringsprojekt & workshops</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
+    </section>
 
-      <!-- GROWTH -->
-      <div class="plan-card" data-plan="Growth">
-        <h3>Growth</h3>
-        <p class="lead">För växande butiker som vill ha mer struktur, tydlighet och återkommande insikter.</p>
-        <table class="pricing">
-          <tr><td>Volym</td><td>Upp till 600 ärenden/mån</td></tr>
-          <tr><td>Kanaler</td><td>E-post</td></tr>
-          <tr><td>Rapportering</td><td>Vecko- och månadsrapporter</td></tr>
-          <tr><td>Analys</td><td>Enkel identifiering av topporsaker</td></tr>
+    <!-- Volympriser -->
+    <section class="section">
+      <h2>Volymbaserad prissättning (per ärende)</h2>
+      <p class="small">Passar när månadsvolymen varierar kraftigt. Pris sätts efter faktisk volym – enkelt och rättvist.</p>
+      <div class="card">
+        <table class="vtable">
+          <tr><th>Nivå</th><th>Ärenden/mån</th><th>Pris per ärende</th><th>Exempel månad</th></tr>
+          <tr><td>Standard</td><td>0–1 000</td><td>20 kr</td><td>20 000 kr ex. moms</td></tr>
+          <tr><td>Tillväxt</td><td>1 001–3 000</td><td>15 kr</td><td>45 000 kr ex. moms</td></tr>
+          <tr><td>Skala</td><td>3 001–6 000</td><td>10–12 kr</td><td>60 000–72 000 kr ex. moms</td></tr>
+          <tr><td>Enterprise</td><td>6 001+</td><td>Offert</td><td>Volymrabatt</td></tr>
         </table>
-        <p class="price">6 990 kr/mån ex. moms</p>
-        <p class="small">Extra ärenden: 15 kr/st</p>
       </div>
+    </section>
 
-      <!-- SCALE -->
-      <div class="plan-card" data-plan="Scale">
-        <h3>Scale</h3>
-        <p class="lead">För butiker som växer snabbt och behöver mer kontinuerlig uppföljning och bättre översikt.</p>
-        <table class="pricing">
-          <tr><td>Volym</td><td>Upp till 1 500 ärenden/mån</td></tr>
-          <tr><td>Kanaler</td><td>E-post (chatt kan läggas till)</td></tr>
-          <tr><td>Rapportering</td><td>Re:amaze + Google Sheets</td></tr>
-          <tr><td>Analys</td><td>Månadsvis analys av trender och topporsaker</td></tr>
-        </table>
-        <p class="price">11 900 kr/mån ex. moms</p>
-        <p class="small">Extra ärenden: 12 kr/st</p>
+    <!-- === TILLÄGG === -->
+    <section class="section">
+      <h2>Tillägg</h2>
+      <div class="grid-3 addons-grid">
+        <div class="card addon">
+          <h3>FAQ & Makron</h3>
+          <p class="lead">Bygg och uppdatera FAQ + 10–20 makron.</p>
+          <p class="small">490 kr/mån</p>
+          <div class="addon-toggle"><span class="chev">▾</span><span>Läs mer</span></div>
+          <div class="addon-details">
+            <ul>
+              <li>Byggnation av FAQ-sektioner i Re:amaze eller Shopify.</li>
+              <li>Optimering av standardsvar och mallar för snabbare hantering.</li>
+              <li>Löpande uppdatering av innehåll baserat på vanliga frågor.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card addon">
+          <h3>Veckorapporter</h3>
+          <p class="lead">Export från Re:amaze till Google Sheets.</p>
+          <p class="small">590 kr/mån</p>
+          <div class="addon-toggle"><span class="chev">▾</span><span>Läs mer</span></div>
+          <div class="addon-details">
+            <ul>
+              <li>Automatisk export av data till Google Sheets.</li>
+              <li>Visualisering av nyckeltal och ärendeutveckling.</li>
+              <li>Sammanfattning med trender och förbättringsförslag varje vecka.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card addon">
+          <h3>Returpolicy & automationsstöd</h3>
+          <p class="lead">Mall + implementation i kundflöden.</p>
+          <p class="small">290 kr/mån</p>
+          <div class="addon-toggle"><span class="chev">▾</span><span>Läs mer</span></div>
+          <div class="addon-details">
+            <ul>
+              <li>Utformning av returpolicy anpassad för din butik.</li>
+              <li>Integration av automatiserade returflöden i Re:amaze.</li>
+              <li>Implementering i FAQ, e-postmallar och spårningssida.</li>
+            </ul>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <!-- PREMIUM -->
-      <div class="plan-card reco" data-plan="Premium">
-        <span class="badge">Rekommenderad</span>
-        <h3>Premium</h3>
-        <p class="lead">För etablerade varumärken som vill ha komplett kundservice med mätbar kvalitet och djupanalys.</p>
-        <table class="pricing">
-          <tr><td>Volym</td><td>Upp till 3 000 ärenden/mån</td></tr>
-          <tr><td>Kanaler</td><td>E-post (chatt kan läggas till)</td></tr>
-          <tr><td>Rapportering</td><td>Re:amaze + Google Sheets</td></tr>
-          <tr><td>Analys</td><td>Djupanalys & topporsaker till ärenden</td></tr>
-        </table>
-        <p class="price">17 900 kr/mån ex. moms</p>
-        <p class="small">Extra ärenden: 10 kr/st</p>
-      </div>
+  </main>
 
-      <!-- ENTERPRISE -->
-      <div class="plan-card" data-plan="Enterprise">
-        <h3>Enterprise</h3>
-        <p class="lead">För högvolymbutiker som kräver full transparens, datadriven styrning och kontinuerlig förbättring.</p>
-        <table class="pricing">
-          <tr><td>Volym</td><td>3 000–6 000+ ärenden/mån</td></tr>
-          <tr><td>Kanaler</td><td>E-post, chatt, sociala medier (valfritt)</td></tr>
-          <tr><td>Rapportering</td><td>Avancerad KPI-uppföljning & förbättringsplan</td></tr>
-          <tr><td>Analys</td><td>Orsaksanalyser, processflöden & kvalitetsmätning</td></tr>
-        </table>
-        <p class="price">fr. 29 900 kr/mån ex. moms</p>
-        <p class="small">Extra ärenden: offert (volymrabatt)</p>
-      </div>
-
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      © <span data-year></span> Konsido AB • Organisationsnr: 559549-3965 • <a href="privacy.html">Integritet</a>
     </div>
-  </section>
+  </footer>
 
-  <!-- Volympriser -->
-  <section class="section">
-    <h2>Volymbaserad prissättning (per ärende)</h2>
-    <p class="small">Passar när månadsvolymen varierar kraftigt. Pris sätts efter faktisk volym – enkelt och rättvist.</p>
-    <div class="card">
-      <table class="vtable">
-        <tr><th>Nivå</th><th>Ärenden/mån</th><th>Pris per ärende</th><th>Exempel månad</th></tr>
-        <tr><td>Standard</td><td>0–1 000</td><td>20 kr</td><td>20 000 kr ex. moms</td></tr>
-        <tr><td>Tillväxt</td><td>1 001–3 000</td><td>15 kr</td><td>45 000 kr ex. moms</td></tr>
-        <tr><td>Skala</td><td>3 001–6 000</td><td>10–12 kr</td><td>60 000–72 000 kr ex. moms</td></tr>
-        <tr><td>Enterprise</td><td>6 001+</td><td>Offert</td><td>Volymrabatt</td></tr>
-      </table>
-    </div>
-  </section>
-
-  <!-- Tillägg -->
-  <section class="section">
-    <h2>Tillägg</h2>
-    <div class="grid-3 addons-grid">
-      <div class="card addon">
-        <h3>FAQ & Makron</h3>
-        <p class="lead">Bygg och uppdatera FAQ + 10–20 makron.</p>
-        <p class="small">490 kr/mån</p>
-      </div>
-
-      <div class="card addon">
-        <h3>Veckorapporter</h3>
-        <p class="lead">Export från Re:amaze till Google Sheets.</p>
-        <p class="small">590 kr/mån</p>
-      </div>
-
-      <div class="card addon">
-        <h3>Returpolicy & automationsstöd</h3>
-        <p class="lead">Mall + implementation i kundflöden.</p>
-        <p class="small">290 kr/mån</p>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <div class="container">
-    © <span data-year></span> Konsido AB • Organisationsnr: 559549-3965 • <a href="privacy.html">Integritet</a>
-  </div>
-</footer>
-
-<script src="assets/script.js"></script>
+  <script src="assets/script.js"></script>
 
 </body>
 </html>
